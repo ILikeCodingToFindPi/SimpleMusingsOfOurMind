@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+
+
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color:#f2825a;
+            color: #333;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+
+        ul {
+            list-style: none;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+
+        .posts-container {
+            margin: 20px 0;
+        }
+
+        .post {
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .post h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .post h5 {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .post p {
+            margin-top: 10px;
+        }
+
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .post h2 {
+                font-size: 20px;
+            }
+        }
+
+        textarea{
+            height: fit-content;
+            width: fit-content;
+        }
+
+
+    </style></styl>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Post</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+    <a th:href="@{/}">Home</a>
+    <hr>
+    <form action="#"
+          th:action="@{'/posts/{id}'(id=${post.id})}"
+          th:object="${post}"
+          method="post">
+        <input type="hidden" th:field="*{account}" />
+
+        <h2>Update Post</h2>
+        <div>
+            <label for="new-post-title">Title</label>
+            <input id="new-post-title" type="text" th:field="*{title}" placeholder="Title"/>
+        </div>
+        <div>
+            <label for="new-post-body">Body</label>
+            <textarea id="new-post-body" th:field="*{body}"></textarea>
+        </div>
+        <button type="submit">Update Post</button>
+    </form>
+</div>
+
+</body>
+</html>
